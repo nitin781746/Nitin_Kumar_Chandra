@@ -1,0 +1,109 @@
+// This is Models 👇👇👇👇
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace myaspdotnetmvc.Models
+{
+    public class Employee
+    {
+        public int EmpId { get; set; }
+        public string EmpName { get; set; }
+        public string Empdesignation { get; set; }
+    }
+}
+
+
+// This is Contriller 👇👇👇👇
+
+using myaspdotnetmvc.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace myaspdotnetmvc.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            Employee obj = new Employee();
+            obj.EmpId = 50;
+            obj.EmpName = "Nitin Chandra";
+            obj.Empdesignation = "Programmer";
+
+            ViewBag.Properties = obj;
+
+
+            ViewBag.Name = "Nitin Chandra";
+            ViewBag.CurrentDate = DateTime.Now;
+
+            string[] Car = { "BMW", "Suzuki", "Honda", "Tata" };
+            ViewBag.CarArray = Car;
+
+            ViewBag.FruitsLists = new List<string>()
+            {
+                "Apple",
+                "Banana",
+                "Orange",
+                "Grapes"
+            };
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}
+
+
+
+// This is View 👇👇👇👇👇👇👇
+
+@{
+    var a = ViewBag.Properties;
+}
+
+<h1>@a.EmpId</h1>
+<h1>@a.EmpName</h1>
+<h1>@a.Empdesignation</h1>
+<p>===============================</p>
+
+<h2>@ViewBag.Name</h2>
+<h2>@ViewBag.CurrentDate</h2>
+
+<h1> This is Simple Array Data </h1>
+<ul>
+    @{
+        foreach (string i in ViewBag.CarArray)
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
+
+
+<h1> This is List Data </h1>
+<ul>
+    @{
+        foreach (string i in ViewBag.FruitsLists)
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
