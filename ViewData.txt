@@ -1,0 +1,101 @@
+// This is Models 👇👇👇👇
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace myaspdotnetmvc.Models
+{
+    public class Employee
+    {
+        public int EmpId { get; set; }
+        public string EmpName { get; set; }
+        public string Empdesignation { get; set; }
+    }
+}
+
+
+// This is Contriller 👇👇👇👇
+
+using myaspdotnetmvc.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace myaspdotnetmvc.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            Employee Nitin = new Employee();
+            Nitin.EmpId = 11;
+            Nitin.EmpName = "Nitin Chandra";
+            Nitin.Empdesignation = "Developer";
+            ViewData["Employee"] = Nitin;
+
+            ViewData["Message"] = "Message from View Data";
+            ViewData["CurrentTime"] = DateTime.Now;
+
+            string[] Country = { "India", "China", "USA", "Pakistan" };
+            ViewData["CountryArray"] = Country;
+            ViewData["FruitsLists"] = new List<string>()
+            {
+                "Cricke",
+                "Hockey",
+                "Football",
+                "Volley Ball"
+            };
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}
+
+
+// This is View 👇👇👇👇👇👇👇
+
+@{ 
+    var a = (myaspdotnetmvc.Models.Employee)ViewData["Employee"];
+}
+
+<h2>My ID is : @a.EmpId</h2>
+<h2>My name is : @a.EmpName</h2>
+<h2>My Designation is : @a.Empdesignation</h2>
+
+<h2>@ViewData["Message"]</h2>
+<h2>@ViewData["CurrentTime"]</h2>
+
+<ul>
+    @{ 
+        foreach (string i in (string[])ViewData["CountryArray"])
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
+
+<ul>
+    @{ 
+        foreach (string i in (List<string>)ViewData["FruitsLists"])
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
