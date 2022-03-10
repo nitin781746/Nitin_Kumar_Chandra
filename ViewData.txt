@@ -16,7 +16,7 @@ namespace myaspdotnetmvc.Models
 }
 
 
-// This is Contriller 👇👇👇👇
+// This is Controller 👇👇👇👇
 
 using myaspdotnetmvc.Models;
 using System;
