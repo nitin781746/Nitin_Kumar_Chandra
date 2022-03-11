@@ -1,0 +1,100 @@
+// This is Contriller 👇👇👇👇
+
+using myaspdotnetmvc.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace myaspdotnetmvc.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            ViewData["Var1"] = "Data comes from ViewData";
+            ViewBag.Var2 = "Data comes from ViewBag";
+            TempData["Var3"] = "Data comes from TempData";
+            Session["Var4"] = "Data comes from TempData";
+
+            string[] Student = { "Nitin Chandra", "Ravi", "Rahul" };
+            Session["Var5"] = Student;
+
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
+}
+
+
+// This is About View 👇👇👇👇👇👇👇
+
+@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<h3>ViewData Data is = @ViewData["Var1"]</h3>
+<h3>ViewBag Data is = @ViewBag.Var2</h3>
+<h3>TempData Data is = @TempData["Var3"]</h3>
+<h3>Session Data is = @Session["Var4"]</h3>
+
+<ul>
+    @{ 
+        foreach (string a in (string[])Session["Var5"])
+        {
+            <li>@a</li>
+        }
+    }
+</ul>
+
+
+// This is Contact View 👇👇👇👇👇👇👇
+
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<h3>ViewData Data is = @ViewData["Var1"]</h3>
+<h3>ViewBag Data is = @ViewBag.Var2</h3>
+<h3>TempData Data is = @TempData["Var3"]</h3>
+<h3>Session Data is = @Session["Var4"]</h3>
+
+<ul>
+    @{
+        foreach (string a in (string[])Session["Var5"])
+        {
+            <li>@a</li>
+        }
+    }
+</ul>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
