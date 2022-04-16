@@ -1,0 +1,32 @@
+Step 1:-
+Package Install for Session 
+
+Step 2:-
+✔✔Add Middleware And Add Configuration
+
+👇👇👇👇👇👇 This is Middleware
+
+app.UseSession(); 
+
+👇👇👇👇👇👇 This is Configuration
+
+services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+services.AddSession();  
+
+
+Step 3:-
+👇👇👇👇👇👇 This is to be written in the Action Method of the controller
+HttpContext.Session.SetString("Name", "My Name is Nitin");
+HttpContext.Session.SetString("Mobile", "9999999990");
+
+
+Step 4:-
+👇👇👇👇👇👇 To show the Session on the View
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor 
+
+
+👇👇👇👇👇👇 To show the Session on the View
+   
+<h1> @HttpContextAccessor.HttpContext.Session.GetString("Name") </h1>
