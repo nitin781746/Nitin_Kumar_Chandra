@@ -30,3 +30,5 @@ Step 4:-
 👇👇👇👇👇👇 To show the Session on the View
    
 <h1> @HttpContextAccessor.HttpContext.Session.GetString("Name") </h1>
+
+
